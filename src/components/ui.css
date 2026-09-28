@@ -1,0 +1,438 @@
+.boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background var(--transicion), color var(--transicion), border-color var(--transicion),
+    transform var(--transicion), box-shadow var(--transicion);
+}
+
+.boton:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.boton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.boton[data-variante="solido"][data-tono="chicha"] {
+  background: var(--chicha);
+  color: #fff;
+}
+.boton[data-variante="solido"][data-tono="chicha"]:hover:not(:disabled) {
+  background: var(--chicha-claro);
+  box-shadow: 0 8px 20px -8px rgba(91, 42, 134, 0.7);
+}
+.boton[data-variante="solido"][data-tono="rocoto"] {
+  background: var(--rocoto);
+  color: #fff;
+}
+.boton[data-variante="solido"][data-tono="limon"] {
+  background: var(--limon);
+  color: #fff;
+}
+.boton[data-variante="solido"][data-tono="aji"] {
+  background: var(--aji);
+  color: var(--tinta);
+}
+
+.boton[data-variante="contorno"] {
+  border-color: var(--tinta-14);
+  background: var(--lienzo);
+}
+.boton[data-variante="contorno"]:hover:not(:disabled) {
+  border-color: var(--chicha);
+  color: var(--chicha);
+}
+.boton[data-variante="contorno"][data-tono="rocoto"]:hover:not(:disabled) {
+  border-color: var(--rocoto);
+  color: var(--rocoto);
+}
+
+.boton[data-variante="fantasma"] {
+  background: transparent;
+  color: var(--tinta-70);
+  padding: 6px 10px;
+}
+.boton[data-variante="fantasma"]:hover:not(:disabled) {
+  background: var(--tinta-07);
+  color: var(--tinta);
+}
+
+.boton__giro {
+  width: 13px;
+  height: 13px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: girar 700ms linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.etiqueta {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.etiqueta[data-tono="neutro"] {
+  background: var(--tinta-07);
+  color: var(--tinta-70);
+}
+.etiqueta[data-tono="chicha"] {
+  background: var(--chicha-tenue);
+  color: var(--chicha);
+}
+.etiqueta[data-tono="aji"] {
+  background: var(--aji-tenue);
+  color: #8a5c00;
+}
+.etiqueta[data-tono="limon"] {
+  background: var(--limon-tenue);
+  color: #47690a;
+}
+.etiqueta[data-tono="rocoto"] {
+  background: var(--rocoto-tenue);
+  color: var(--rocoto);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo__etiqueta {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-45);
+}
+
+.campo__control {
+  padding: 10px 12px;
+  border: 1px solid var(--tinta-14);
+  border-radius: var(--radio-sm);
+  background: var(--lienzo);
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.campo__control:focus {
+  outline: none;
+  border-color: var(--chicha);
+  box-shadow: 0 0 0 3px var(--chicha-tenue);
+}
+
+.campo__ayuda {
+  font-size: 12px;
+  color: var(--tinta-45);
+}
+
+.panel {
+  background: var(--lienzo);
+  border: 1px solid var(--tinta-07);
+  border-radius: var(--radio);
+  padding: 20px;
+  box-shadow: var(--sombra);
+}
+
+.panel[data-ancho="completo"] {
+  grid-column: 1 / -1;
+}
+
+.panel__cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.panel__titulo {
+  font-size: 17px;
+}
+
+.panel__descripcion {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--tinta-45);
+}
+
+.tabla-envoltura {
+  overflow-x: auto;
+  margin: 0 -20px -20px;
+  padding: 0 20px 4px;
+}
+
+table.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabla th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-45);
+  padding: 0 12px 8px;
+  border-bottom: 1px solid var(--tinta-14);
+  white-space: nowrap;
+}
+
+.tabla td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--tinta-07);
+  vertical-align: middle;
+}
+
+.tabla tbody tr {
+  transition: background var(--transicion);
+}
+
+.tabla tbody tr:hover {
+  background: var(--tinta-07);
+}
+
+.tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla .num {
+  text-align: right;
+  font-family: var(--dato);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabla .acciones {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.modal__fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 27, 46, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 60;
+}
+
+.modal {
+  background: var(--lienzo);
+  border-radius: var(--radio);
+  width: min(560px, 100%);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sombra-alta);
+}
+
+.modal__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--tinta-07);
+}
+
+.modal__titulo {
+  font-size: 18px;
+}
+
+.modal__cerrar {
+  border: none;
+  background: transparent;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--tinta-45);
+  padding: 0 4px;
+  transition: color var(--transicion);
+}
+
+.modal__cerrar:hover {
+  color: var(--tinta);
+}
+
+.modal__cuerpo {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.formulario {
+  display: grid;
+  gap: 14px;
+}
+
+.formulario__par {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.formulario__pie {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  gap: 8px;
+}
+
+.vacio__marca {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radio-sm);
+  opacity: 0.35;
+  margin-bottom: 6px;
+}
+
+.vacio__titulo {
+  font-size: 16px;
+}
+
+.vacio__mensaje {
+  margin: 0 0 8px;
+  color: var(--tinta-45);
+  font-size: 14px;
+  max-width: 42ch;
+}
+
+.cargando {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 4px;
+  color: var(--tinta-45);
+  font-size: 14px;
+}
+
+.cargando__barra {
+  width: 46px;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--tinta-14);
+  position: relative;
+  overflow: hidden;
+}
+
+.cargando__barra::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  border-radius: 99px;
+  background: var(--chicha);
+  animation: recorrer 1s ease-in-out infinite;
+}
+
+@keyframes recorrer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+.error-caja {
+  background: var(--rocoto-tenue);
+  color: var(--rocoto);
+  border-radius: var(--radio-sm);
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nivel {
+  position: relative;
+  height: 7px;
+  min-width: 84px;
+  border-radius: 99px;
+  background: var(--tinta-07);
+  overflow: hidden;
+}
+
+.nivel__relleno {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--limon);
+  transition: width 420ms cubic-bezier(0.32, 0.72, 0, 1), background var(--transicion);
+}
+
+.nivel__relleno[data-critico="true"] {
+  background: var(--rocoto);
+}
+
+.nivel__marca {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  background: var(--tinta-45);
+  border-radius: 2px;
+}
+
+.barra-herramientas {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.buscador {
+  flex: 1;
+  min-width: 200px;
+  padding: 9px 14px;
+  border: 1px solid var(--tinta-14);
+  border-radius: 999px;
+  background: var(--lienzo);
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.buscador:focus {
+  outline: none;
+  border-color: var(--chicha);
+  box-shadow: 0 0 0 3px var(--chicha-tenue);
+}
+
+@media (max-width: 640px) {
+  .formulario__par {
+    grid-template-columns: 1fr;
+  }
+}

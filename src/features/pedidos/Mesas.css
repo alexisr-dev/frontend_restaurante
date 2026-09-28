@@ -1,0 +1,182 @@
+/* Tira de conteo por estado, sobre la grilla del salon. */
+.salon-resumen {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 14px;
+  padding: 12px 8px;
+  border-radius: var(--radio);
+  border: 1px solid var(--tinta-14);
+  background: var(--lienzo);
+}
+
+.salon-resumen > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.salon-resumen b {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.salon-resumen span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tinta-45);
+}
+
+.salon-resumen > div[data-tono="libre"] b {
+  color: var(--limon);
+}
+.salon-resumen > div[data-tono="ocupada"] b {
+  color: var(--chicha);
+}
+.salon-resumen > div[data-tono="reservada"] b {
+  color: var(--aji);
+}
+
+.salon-resumen i {
+  width: 1px;
+  align-self: stretch;
+  background: var(--tinta-14);
+}
+
+.salon {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+}
+
+.mesa {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radio);
+  border: 1px solid var(--tinta-14);
+  background: var(--lienzo);
+  overflow: hidden;
+  transition:
+    transform var(--transicion),
+    box-shadow var(--transicion),
+    border-color var(--transicion);
+}
+
+/* --tono / --tono-tenue: alimentan tanto el degradado del lienzo como el
+   relleno del SVG. Se definen una sola vez por estado. */
+.mesa[data-estado="libre"] {
+  --tono: var(--limon);
+  --tono-tenue: var(--limon-tenue);
+}
+.mesa[data-estado="ocupada"] {
+  --tono: var(--chicha);
+  --tono-tenue: var(--chicha-tenue);
+}
+.mesa[data-estado="reservada"] {
+  --tono: var(--aji);
+  --tono-tenue: var(--aji-tenue);
+}
+
+.mesa:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra);
+}
+
+.mesa[data-estado="ocupada"] {
+  border-color: color-mix(in srgb, var(--chicha) 40%, transparent);
+  box-shadow: 0 10px 24px -14px color-mix(in srgb, var(--chicha) 70%, transparent);
+}
+
+/* --- Plano cenital --- */
+.mesa__lienzo {
+  position: relative;
+  aspect-ratio: 1 / 0.92;
+  background: linear-gradient(180deg, var(--tono-tenue), var(--lienzo) 70%);
+}
+
+.mesa__plano {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mesa__tablero {
+  fill: var(--tono-tenue);
+  stroke: color-mix(in srgb, var(--tono) 45%, transparent);
+  stroke-width: 1.6;
+}
+.mesa[data-estado="ocupada"] .mesa__tablero {
+  stroke: color-mix(in srgb, var(--tono) 65%, transparent);
+}
+
+.mesa__silla {
+  fill: color-mix(in srgb, var(--tono) 6%, transparent);
+  stroke: color-mix(in srgb, var(--tono) 55%, transparent);
+  stroke-width: 1.3;
+  transition: fill var(--transicion);
+}
+.mesa[data-estado="ocupada"] .mesa__silla {
+  fill: var(--tono);
+  stroke: var(--tono);
+}
+.mesa[data-estado="reservada"] .mesa__silla {
+  fill: color-mix(in srgb, var(--tono) 28%, transparent);
+}
+
+.mesa__numero {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--tinta);
+}
+.mesa[data-estado="ocupada"] .mesa__numero {
+  color: var(--chicha);
+}
+
+/* Cantidad de sillas: para ubicar la mesa de un vistazo. */
+.mesa__sitios {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 7px;
+  border-radius: 99px;
+  border: 1px solid var(--tinta-14);
+  background: var(--lienzo);
+  font-family: var(--dato);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--tinta);
+}
+.mesa__sitios svg {
+  color: var(--tinta-45);
+}
+
+.mesa__pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px 12px;
+}
+
+.mesa__cuenta {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tono);
+}

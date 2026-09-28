@@ -1,0 +1,132 @@
+.ingreso {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  min-height: 100vh;
+}
+
+.ingreso__portada {
+  position: relative;
+  background: var(--tinta);
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  padding: 48px;
+  overflow: hidden;
+}
+
+.ingreso__tapiz {
+  position: absolute;
+  inset: -10% -30% auto -10%;
+  height: 78%;
+  transform: rotate(-8deg);
+  opacity: 0.5;
+  mask-image: linear-gradient(180deg, #000 20%, transparent 92%);
+}
+
+.ingreso__discurso {
+  position: relative;
+  max-width: 46ch;
+}
+
+.ingreso__eyebrow {
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--aji);
+}
+
+.ingreso__titulo {
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.ingreso__titulo em {
+  display: block;
+  font-style: normal;
+  color: var(--aji);
+}
+
+.ingreso__texto {
+  margin: 18px 0 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.ingreso__panel {
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background: var(--papel);
+}
+
+.ingreso__forma {
+  width: min(380px, 100%);
+  display: grid;
+  gap: 14px;
+}
+
+.ingreso__saludo {
+  font-size: 27px;
+}
+
+.ingreso__ayuda {
+  margin: -8px 0 4px;
+  color: var(--tinta-45);
+  font-size: 14px;
+}
+
+.ingreso__forma .boton {
+  justify-content: center;
+  margin-top: 4px;
+  padding-block: 11px;
+}
+
+.ingreso__pista {
+  margin-top: 10px;
+  padding: 14px 16px;
+  border-radius: var(--radio-sm);
+  background: var(--lienzo);
+  border: 1px dashed var(--tinta-14);
+}
+
+.ingreso__pista-titulo {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tinta-45);
+}
+
+.ingreso__pista ul {
+  margin: 0;
+  padding-left: 16px;
+  display: grid;
+  gap: 3px;
+}
+
+.ingreso__pista li {
+  font-size: 12.5px;
+  color: var(--tinta-70);
+}
+
+.ingreso__pista code {
+  font-family: var(--dato);
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .ingreso {
+    grid-template-columns: 1fr;
+  }
+
+  .ingreso__portada {
+    padding: 32px 24px;
+    min-height: 240px;
+  }
+}

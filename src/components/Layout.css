@@ -1,0 +1,289 @@
+.marco {
+  display: grid;
+  grid-template-columns: var(--rail) 1fr;
+  min-height: 100vh;
+}
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  background: var(--lienzo);
+  border-right: 1px solid var(--tinta-07);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.rail__marca {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 20px 18px 18px;
+}
+
+.rail__logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.rail__nombre {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.03em;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.rail__sub {
+  margin: 0;
+  font-size: 11px;
+  color: var(--tinta-45);
+  letter-spacing: 0.02em;
+}
+
+.rail__nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 10px 16px;
+}
+
+.rail__grupo + .rail__grupo {
+  margin-top: 16px;
+}
+
+.rail__grupo-titulo {
+  margin: 0 0 4px;
+  padding: 0 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tinta-45);
+}
+
+.rail__enlace {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: var(--radio-sm);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--tinta-70);
+  position: relative;
+  transition: background var(--transicion), color var(--transicion);
+}
+
+.rail__enlace svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+.rail__enlace:hover {
+  background: var(--tinta-07);
+  color: var(--tinta);
+}
+
+.rail__enlace.es-activo {
+  background: var(--chicha-tenue);
+  color: var(--chicha);
+  font-weight: 600;
+}
+
+.rail__enlace.es-activo svg {
+  opacity: 1;
+}
+
+.rail__enlace.es-activo::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--chicha);
+}
+
+.rail__contador {
+  margin-left: auto;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--rocoto);
+  color: #fff;
+  font-family: var(--dato);
+  font-size: 11px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+  animation: latido 2.4s ease-in-out infinite;
+}
+
+@keyframes latido {
+  0%,
+  88%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(196, 35, 72, 0);
+  }
+  94% {
+    box-shadow: 0 0 0 5px rgba(196, 35, 72, 0.22);
+  }
+}
+
+.rail__pie {
+  height: 40px;
+  opacity: 0.5;
+}
+
+.columna {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.cinta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 28px;
+  background: var(--papel);
+  border-bottom: 1px solid var(--tinta-07);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.cinta__ruta {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tinta-45);
+}
+
+.cinta__titulo {
+  font-size: 24px;
+  margin-top: 2px;
+}
+
+.cinta__usuario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cinta__identidad {
+  text-align: right;
+}
+
+.cinta__nombre {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cinta__rol {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-45);
+}
+
+.cinta__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--chicha);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.cinta__salir {
+  border: 1px solid var(--tinta-14);
+  background: var(--lienzo);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color var(--transicion), color var(--transicion);
+}
+
+.cinta__salir:hover {
+  border-color: var(--rocoto);
+  color: var(--rocoto);
+}
+
+.lienzo {
+  flex: 1;
+  padding: 24px 28px 48px;
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .marco {
+    grid-template-columns: 1fr;
+  }
+
+  .rail {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--tinta-07);
+  }
+
+  .rail__nav {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .rail__grupo + .rail__grupo {
+    margin-top: 0;
+  }
+
+  .rail__grupo {
+    display: flex;
+    gap: 4px;
+  }
+
+  .rail__grupo-titulo {
+    display: none;
+  }
+
+  .rail__enlace span {
+    white-space: nowrap;
+  }
+
+  .rail__pie {
+    display: none;
+  }
+
+  .cinta,
+  .lienzo {
+    padding-inline: 16px;
+  }
+}
